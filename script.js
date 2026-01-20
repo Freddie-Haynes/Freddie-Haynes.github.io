@@ -1,4 +1,3 @@
-alert("JS is linked!");
 // Grab all the subject buttons and all the content panels
 const subjectButtons = document.querySelectorAll(".subject-card");
 const panels = document.querySelectorAll(".panel");
