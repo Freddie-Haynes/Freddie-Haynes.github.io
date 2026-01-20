@@ -1,12 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My GitHub Website</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Freddie's Learning Hub</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
+  <header class="site-header">
+    <h1>Freddie's Learning Hub</h1>
+    <p>Pick a subject to start.</p>
+  </header>
 
-  <h1>Hello world</h1>
+  <main class="container">
+    <!-- SUBJECT BUTTONS -->
+    <section class="subjects" aria-label="Subjects">
+      <button class="subject-card" data-subject="maths">
+        <h2>Maths</h2>
+        <p>Algebra, calculus, exam practice</p>
+      </button>
 
+      <button class="subject-card" data-subject="cs">
+        <h2>Computer Science</h2>
+        <p>Programming, algorithms, NEA</p>
+      </button>
+
+      <button class="subject-card" data-subject="physics">
+        <h2>Physics</h2>
+        <p>Mechanics, electricity, waves</p>
+      </button>
+
+      <button class="subject-card" data-subject="chemistry">
+        <h2>Chemistry</h2>
+        <p>Bonding, moles, reactions</p>
+      </button>
+    </section>
+
+    <!-- SUBJECT CONTENT -->
+    <section class="content" aria-live="polite">
+      <!-- default content (home) -->
+      <div class="panel active" id="home">
+        <h2>Home</h2>
+        <p>Click a subject above to see resources, topics, or links.</p>
+      </div>
+
+      <div class="panel" id="maths">
+        <h2>Maths</h2>
+        <ul>
+          <li><a href="#" data-action="placeholder">Pure: differentiation & integration</a></li>
+          <li><a href="#" data-action="placeholder">Stats: distributions & hypothesis tests</a></li>
+          <li><a href="#" data-action="placeholder">Mechanics: forces & moments</a></li>
+        </ul>
+      </div>
+
+      <div class="panel" id="cs">
+        <h2>Computer Science</h2>
+        <ul>
+          <li><a href="#" data-action="placeholder">C# / Python practice</a></li>
+          <li><a href="#" data-action="placeholder">Algorithms & data structures</a></li>
+          <li><a href="#" data-action="placeholder">NEA project ideas</a></li>
+        </ul>
+      </div>
+
+      <div class="panel" id="physics">
+        <h2>Physics</h2>
+        <ul>
+          <li><a href="#" data-action="placeholder">Electric fields & circuits</a></li>
+          <li><a href="#" data-action="placeholder">Waves & interference</a></li>
+          <li><a href="#" data-action="placeholder">Mechanics & energy</a></li>
+        </ul>
+      </div>
+
+      <div class="panel" id="chemistry">
+        <h2>Chemistry</h2>
+        <ul>
+          <li><a href="#" data-action="placeholder">Moles & calculations</a></li>
+          <li><a href="#" data-action="placeholder">Organic chemistry basics</a></li>
+          <li><a href="#" data-action="placeholder">Acids, bases & buffers</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <button id="homeBtn" class="home-btn">Back to Home</button>
+    <p>Made with GitHub Pages</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
