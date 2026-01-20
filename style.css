@@ -1,6 +1,4 @@
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -10,10 +8,10 @@ body {
 }
 
 .site-header {
-  padding: 32px 16px;
-  text-align: center;
   background: #111827;
   color: white;
+  text-align: center;
+  padding: 34px 16px;
 }
 
 .site-header h1 {
@@ -29,92 +27,74 @@ body {
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 20px 16px 40px;
+  padding: 18px 16px 40px;
 }
 
-.subjects {
+.controls {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0 16px;
+}
+
+.btn {
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #111827;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #f9fafb;
+}
+
+.grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 14px;
-  margin-bottom: 18px;
 }
 
-.subject-card {
-  text-align: left;
+.card {
   border: 1px solid #d1d5db;
   background: white;
   border-radius: 14px;
   padding: 16px;
   cursor: pointer;
   transition: transform 0.12s ease, box-shadow 0.12s ease;
+  text-align: left;
 }
 
-.subject-card:hover {
+.card:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
-.subject-card:focus {
+.card:focus {
   outline: 3px solid rgba(59, 130, 246, 0.5);
   outline-offset: 2px;
 }
 
-.subject-card h2 {
+.card h2 {
   margin: 0 0 6px;
   font-size: 1.25rem;
 }
 
-.subject-card p {
+.card p {
   margin: 0;
   color: #4b5563;
 }
 
-.content {
-  background: white;
-  border: 1px solid #d1d5db;
-  border-radius: 14px;
-  padding: 18px;
-  min-height: 200px;
-}
-
 .panel {
-  display: none;
-}
-
-.panel.active {
-  display: block;
-}
-
-.panel ul {
-  padding-left: 18px;
-}
-
-.panel a {
-  color: #2563eb;
-  text-decoration: none;
-}
-
-.panel a:hover {
-  text-decoration: underline;
+  margin-top: 16px;
+  border: 1px solid #d1d5db;
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
 }
 
 .site-footer {
-  padding: 18px 16px;
   text-align: center;
+  padding: 18px 16px;
   color: #6b7280;
 }
-
-.home-btn {
-  background: #111827;
-  color: white;
-  border: none;
-  padding: 10px 14px;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
-.home-btn:hover {
-  opacity: 0.92;
-}
-
