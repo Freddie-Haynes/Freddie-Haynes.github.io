@@ -149,7 +149,7 @@ function openTopic(subjectTitle, topicName) {
   // For now, just show a panel. Later you can link to real pages or load content.
   showPanel(
     `${subjectTitle}: ${topicName}`,
-    `This is a placeholder area. You can add notes, links, videos, or practice questions for "${topicName}" here.`
+    `hello "${topicName}"`
   );
 }
 
