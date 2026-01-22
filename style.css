@@ -1,132 +1,282 @@
-/* Basic reset */
+/* ===== Reset ===== */
 * { box-sizing: border-box; }
+html, body { height: 100%; }
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f3f4f6;
-  color: #111827;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #0b1220;
+  overflow-x: hidden;
+  background: radial-gradient(1000px 600px at 20% 10%, rgba(99,102,241,0.18), transparent 60%),
+              radial-gradient(900px 600px at 80% 0%, rgba(236,72,153,0.14), transparent 55%),
+              radial-gradient(900px 700px at 70% 80%, rgba(34,197,94,0.12), transparent 55%),
+              #0b1020;
 }
 
-/* Layout */
-.site-header {
-  padding: 32px 20px;
-  text-align: center;
-  background: #111827;
-  color: white;
+/* Decorative blobs */
+.bg-blobs { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+.blob {
+  position: absolute;
+  filter: blur(40px);
+  opacity: 0.55;
+  border-radius: 999px;
+  transform: translateZ(0);
 }
-.site-header h1 {
-  margin: 0 0 8px;
-  font-size: 2rem;
-}
-.subtitle { margin: 0; opacity: 0.85; }
+.blob-1 { width: 420px; height: 420px; left: -120px; top: -120px; background: rgba(99,102,241,0.45); }
+.blob-2 { width: 380px; height: 380px; right: -120px; top: 40px; background: rgba(236,72,153,0.35); }
+.blob-3 { width: 520px; height: 520px; right: 10%; bottom: -200px; background: rgba(34,197,94,0.28); }
 
-.container {
+/* ===== App layout ===== */
+.app {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+/* Each screen is full-height and replaces the other */
+.screen {
+  min-height: 100vh;
+  display: none;
+  padding: 28px 16px;
+}
+.screen-active {
+  display: flex;
+  flex-direction: column;
+  animation: screenIn 260ms ease both;
+}
+@keyframes screenIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Constrain content */
+.screen-header, .screen-body, .screen-footer {
+  width: 100%;
   max-width: 980px;
   margin: 0 auto;
-  padding: 24px 16px;
 }
 
-.site-footer {
-  text-align: center;
-  padding: 20px;
-  color: #6b7280;
+.screen-header { padding: 4px 0 18px; }
+.screen-body { flex: 1; }
+.screen-footer { padding: 16px 0 8px; }
+
+/* Glass panel effect */
+.screen-header, .screen-body {
+  border-radius: 22px;
 }
 
-/* Pages */
-.page { display: none; }
-.page-active { display: block; }
-
-.page-title {
-  margin: 0 0 16px;
-  font-size: 1.6rem;
+/* ===== Brand ===== */
+.brand {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 18px 18px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(12px);
 }
 
-/* MAIN TOPIC COLUMN */
+.brand-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: rgba(255,255,255,0.92);
+  background: linear-gradient(135deg, rgba(99,102,241,0.9), rgba(236,72,153,0.85));
+  box-shadow: 0 18px 34px rgba(0,0,0,0.28);
+}
+
+.brand-title {
+  margin: 0 0 3px;
+  color: rgba(255,255,255,0.95);
+  font-size: 1.55rem;
+}
+.brand-subtitle {
+  margin: 0;
+  color: rgba(255,255,255,0.75);
+}
+
+/* ===== Titles ===== */
+.section-title {
+  margin: 18px 6px 14px;
+  font-size: 1.15rem;
+  letter-spacing: 0.2px;
+  color: rgba(255,255,255,0.88);
+}
+
+/* ===== Buttons ===== */
+.btn {
+  border: 0;
+  cursor: pointer;
+  border-radius: 14px;
+  padding: 10px 14px;
+  font-weight: 700;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+
+.btn:active { transform: scale(0.98); }
+
+.btn-primary {
+  color: rgba(255,255,255,0.94);
+  background: linear-gradient(135deg, rgba(99,102,241,0.92), rgba(236,72,153,0.88));
+  box-shadow: 0 14px 30px rgba(0,0,0,0.28);
+}
+.btn-primary:hover { box-shadow: 0 18px 40px rgba(0,0,0,0.34); }
+
+.btn-ghost {
+  color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.12); }
+
+/* ===== Topic column cards ===== */
 .topic-column {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  padding: 12px 6px 0;
 }
 
 .topic-card {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 54px 1fr 32px;
+  align-items: center;
+  gap: 14px;
+
   text-align: left;
-  border: 0;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 16px 16px;
+  box-shadow: 0 16px 36px rgba(0,0,0,0.20);
   cursor: pointer;
-  background: white;
-  border-radius: 14px;
-  padding: 18px 18px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  transition: transform 0.08s ease, box-shadow 0.08s ease;
-}
-
-.topic-card h3 {
-  margin: 0 0 6px;
-  font-size: 1.25rem;
-}
-
-.topic-card p {
-  margin: 0;
-  color: #4b5563;
-  line-height: 1.35;
+  transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
 }
 
 .topic-card:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.10);
+  box-shadow: 0 22px 44px rgba(0,0,0,0.26);
 }
 
-/* SUBTOPIC HEADER */
-.subtopic-header {
-  display: flex;
+.topic-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  color: rgba(255,255,255,0.92);
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.topic-text h3 {
+  margin: 0 0 6px;
+  color: rgba(255,255,255,0.94);
+  font-size: 1.15rem;
+}
+.topic-text p {
+  margin: 0;
+  color: rgba(255,255,255,0.70);
+  line-height: 1.35;
+}
+
+.chev {
+  justify-self: end;
+  color: rgba(255,255,255,0.85);
+  font-weight: 900;
+}
+
+/* ===== Subtopic top bar ===== */
+.topbar {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 10px;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 6px;
+  padding: 16px 16px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(12px);
 }
 
-.back-btn {
-  border: 0;
-  cursor: pointer;
-  background: #e5e7eb;
-  padding: 10px 12px;
-  border-radius: 12px;
-  font-weight: 600;
+.topbar-title h2 {
+  margin: 0;
+  color: rgba(255,255,255,0.95);
+  font-size: 1.25rem;
+}
+.topbar-title p {
+  margin: 4px 0 0;
+  color: rgba(255,255,255,0.72);
 }
 
-.back-btn:hover { background: #d1d5db; }
-
-.hint {
-  margin: 0 0 18px;
-  color: #4b5563;
-}
-
-/* SUBTOPIC GRID */
+/* ===== Subtopic grid cards ===== */
 .grid {
+  padding: 14px 6px 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 
 .subtopic-card {
-  background: white;
-  border-radius: 14px;
-  padding: 16px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border-radius: 20px;
+  padding: 16px 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.20);
+  transition: transform 140ms ease, background 140ms ease, box-shadow 140ms ease;
+}
+
+.subtopic-card:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.10);
+  box-shadow: 0 22px 44px rgba(0,0,0,0.26);
 }
 
 .subtopic-card h3 {
   margin: 0 0 8px;
-  font-size: 1.15rem;
+  color: rgba(255,255,255,0.94);
+  font-size: 1.05rem;
 }
-
 .subtopic-card p {
   margin: 0;
-  color: #4b5563;
+  color: rgba(255,255,255,0.70);
   line-height: 1.45;
 }
 
-/* Responsive: 1 column grid on small screens */
-@media (max-width: 640px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+.tag-row { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+.tag {
+  font-size: 0.78rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.tiny {
+  margin: 0;
+  padding: 8px 6px 0;
+  color: rgba(255,255,255,0.55);
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  .grid { grid-template-columns: 1fr; }
+  .topic-card { grid-template-columns: 50px 1fr 26px; }
+  .topic-icon { width: 50px; height: 50px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen-active { animation: none; }
+  .topic-card, .subtopic-card, .btn { transition: none; }
 }
