@@ -1,166 +1,54 @@
-// ---- Data: subjects and their topics (edit these whenever you want) ----
-const SUBJECTS = [
-  {
-    id: "maths",
-    title: "Maths",
-    desc: "Pure, Stats, Mechanics",
-    topics: [
-      "Algebra",
-      "Calculus",
-      "Trigonometry",
-      "Vectors",
-      "Statistics",
-      "Mechanics"
-    ]
-  },
-  {
-    id: "cs",
-    title: "Computer Science",
-    desc: "Programming + theory",
-    topics: [
-      "Programming (C#/Python)",
-      "Algorithms",
-      "Data Structures",
-      "Databases (SQL)",
-      "Networks",
-      "NEA Project"
-    ]
-  },
-  {
-    id: "physics",
-    title: "Physics",
-    desc: "Salters / A-Level topics",
-    topics: [
-      "Mechanics",
-      "Electricity",
-      "Waves",
-      "Particles",
-      "Materials",
-      "Astrophysics"
-    ]
-  },
-  {
-    id: "projects",
-    title: "Personal Projects",
-    desc: "Build stuff you like",
-    topics: [
-      "Website Improvements",
-      "Unity Game Dev",
-      "C# Console Games",
-      "Python Tools",
-      "AI Experiments",
-      "Revision Tracker"
-    ]
-  }
-];
+// Pages
+const topicPage = document.getElementById("topicPage");
+const subtopicPage = document.getElementById("subtopicPage");
 
-// ---- Elements ----
-const grid = document.getElementById("grid");
-const subtitle = document.getElementById("subtitle");
-
+// Title + controls
+const subtopicTitle = document.getElementById("subtopicTitle");
+const subtopicHint = document.getElementById("subtopicHint");
 const backBtn = document.getElementById("backBtn");
-const homeBtn = document.getElementById("homeBtn");
 
-const panel = document.getElementById("panel");
-const panelTitle = document.getElementById("panelTitle");
-const panelText = document.getElementById("panelText");
+// Topic buttons + subtopic groups
+const topicButtons = document.querySelectorAll("[data-topic]");
+const subtopicGroups = document.querySelectorAll("[data-topic-group]");
 
-// ---- Simple "router" state ----
-let currentSubjectId = null; // null means "home"
-let lastView = "home"; // "home" or "topics"
-
-// ---- Render helpers ----
-function clearPanel() {
-  panel.hidden = true;
-  panelTitle.textContent = "";
-  panelText.textContent = "";
+function showPage(pageToShow) {
+  topicPage.classList.remove("page-active");
+  subtopicPage.classList.remove("page-active");
+  pageToShow.classList.add("page-active");
 }
 
-function showPanel(title, text) {
-  panel.hidden = false;
-  panelTitle.textContent = title;
-  panelText.textContent = text;
-}
-
-function renderCards(cards) {
-  grid.innerHTML = "";
-
-  cards.forEach(card => {
-    const btn = document.createElement("button");
-    btn.className = "card";
-    btn.type = "button";
-    btn.innerHTML = `
-      <h2>${card.title}</h2>
-      <p>${card.desc}</p>
-    `;
-    btn.addEventListener("click", card.onClick);
-    grid.appendChild(btn);
+function showSubtopics(topicKey) {
+  // Hide all groups
+  subtopicGroups.forEach(group => {
+    group.hidden = true;
   });
+
+  // Show the matching group
+  const group = document.querySelector(`[data-topic-group="${topicKey}"]`);
+  if (group) group.hidden = false;
+
+  // Update heading text
+  const niceName =
+    topicKey === "maths" ? "Maths" :
+    topicKey === "physics" ? "Physics" :
+    topicKey === "cs" ? "Computer Science" :
+    "Subtopics";
+
+  subtopicTitle.textContent = `${niceName} — Subtopics`;
+  subtopicHint.textContent = `Here are some ${niceName} subtopics with short descriptions.`;
+
+  showPage(subtopicPage);
 }
 
-function setControls({ showBack, showHome }) {
-  backBtn.hidden = !showBack;
-  homeBtn.hidden = !showHome;
-}
-
-function findSubject(subjectId) {
-  return SUBJECTS.find(s => s.id === subjectId);
-}
-
-// ---- Views ----
-function goHome() {
-  currentSubjectId = null;
-  lastView = "home";
-  subtitle.textContent = "Choose a subject";
-  clearPanel();
-
-  setControls({ showBack: false, showHome: false });
-
-  const subjectCards = SUBJECTS.map(s => ({
-    title: s.title,
-    desc: s.desc,
-    onClick: () => goTopics(s.id)
-  }));
-
-  renderCards(subjectCards);
-}
-
-function goTopics(subjectId) {
-  const subject = findSubject(subjectId);
-  if (!subject) return;
-
-  currentSubjectId = subjectId;
-  lastView = "topics";
-  subtitle.textContent = `${subject.title} — choose a topic`;
-  clearPanel();
-
-  setControls({ showBack: true, showHome: true });
-
-  const topicCards = subject.topics.map(topicName => ({
-    title: topicName,
-    desc: "Click to open",
-    onClick: () => openTopic(subject.title, topicName)
-  }));
-
-  renderCards(topicCards);
-}
-
-function openTopic(subjectTitle, topicName) {
-  // For now, just show a panel. Later you can link to real pages or load content.
-  showPanel(
-    `${subjectTitle}: ${topicName}`,
-    `hello "${topicName}"`
-  );
-}
-
-// ---- Button actions ----
-backBtn.addEventListener("click", () => {
-  // Back from topics -> home
-  // (You can expand this later if you add deeper navigation.)
-  if (lastView === "topics") goHome();
+// Click a topic
+topicButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const topicKey = btn.getAttribute("data-topic");
+    showSubtopics(topicKey);
+  });
 });
 
-homeBtn.addEventListener("click", goHome);
-
-// ---- Start ----
-goHome();
+// Back
+backBtn.addEventListener("click", () => {
+  showPage(topicPage);
+});
