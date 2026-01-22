@@ -8,163 +8,248 @@
 </head>
 
 <body>
-  <header class="site-header">
-    <h1>Freddie's Learning Hub</h1>
-    <p class="subtitle">Pick a topic, then choose a subtopic.</p>
-  </header>
+  <!-- Decorative background blobs -->
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
 
-  <main class="container">
+  <main class="app">
 
-    <!-- ===== MAIN TOPIC PAGE ===== -->
-    <section id="topicPage" class="page page-active" aria-label="Topic chooser">
-      <h2 class="page-title">Topics</h2>
+    <!-- ===== TOPIC SCREEN ===== -->
+    <section id="topicPage" class="screen screen-active" aria-label="Topic chooser">
+      <header class="screen-header">
+        <div class="brand">
+          <div class="brand-mark">FH</div>
+          <div>
+            <h1 class="brand-title">Freddie's Learning Hub</h1>
+            <p class="brand-subtitle">Pick a topic to explore your notes.</p>
+          </div>
+        </div>
+      </header>
 
-      <div class="topic-column">
-        <button class="topic-card" type="button" data-topic="maths">
-          <h3>Maths</h3>
-          <p>Pure, Stats, Mechanics, and problem-solving.</p>
-        </button>
+      <div class="screen-body">
+        <h2 class="section-title">Topics</h2>
 
-        <button class="topic-card" type="button" data-topic="physics">
-          <h3>Physics</h3>
-          <p>Forces, fields, energy, and real-world applications.</p>
-        </button>
+        <div class="topic-column">
+          <button class="topic-card" type="button" data-topic="maths">
+            <div class="topic-icon" aria-hidden="true">∫</div>
+            <div class="topic-text">
+              <h3>Maths</h3>
+              <p>Pure, Stats, Mechanics — clean summaries and practice.</p>
+            </div>
+            <div class="chev" aria-hidden="true">→</div>
+          </button>
 
-        <button class="topic-card" type="button" data-topic="cs">
-          <h3>Computer Science</h3>
-          <p>Programming, algorithms, systems, and NEA projects.</p>
-        </button>
+          <button class="topic-card" type="button" data-topic="physics">
+            <div class="topic-icon" aria-hidden="true">⚡</div>
+            <div class="topic-text">
+              <h3>Physics</h3>
+              <p>Forces, fields, energy — with real-world intuition.</p>
+            </div>
+            <div class="chev" aria-hidden="true">→</div>
+          </button>
+
+          <button class="topic-card" type="button" data-topic="cs">
+            <div class="topic-icon" aria-hidden="true">⌘</div>
+            <div class="topic-text">
+              <h3>Computer Science</h3>
+              <p>Programming, algorithms, systems — and NEA ideas.</p>
+            </div>
+            <div class="chev" aria-hidden="true">→</div>
+          </button>
+        </div>
       </div>
+
+      <footer class="screen-footer">
+        <p class="tiny">HTML = content • CSS = style • JS = behaviour</p>
+      </footer>
     </section>
 
-    <!-- ===== SUBTOPIC CHOOSER PAGE ===== -->
-    <section id="subtopicPage" class="page" aria-label="Subtopic chooser">
-      <div class="subtopic-header">
-        <button id="backBtn" class="back-btn" type="button">← Back to Topics</button>
-        <h2 class="page-title" id="subtopicTitle">Subtopics</h2>
+    <!-- ===== SUBTOPIC SCREEN ===== -->
+    <section id="subtopicPage" class="screen" aria-label="Subtopic chooser">
+      <header class="screen-header">
+        <div class="topbar">
+          <button id="homeBtn" class="btn btn-primary" type="button">Home</button>
+          <button id="backBtn" class="btn btn-ghost" type="button">Back</button>
+
+          <div class="topbar-title">
+            <h2 id="subtopicTitle">Subtopics</h2>
+            <p id="subtopicHint">Choose a subtopic to see its description.</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="screen-body">
+
+        <!-- ===== MATHS SUBTOPICS ===== -->
+        <section class="subtopic-group" data-topic-group="maths" hidden>
+          <div class="grid">
+            <article class="subtopic-card">
+              <h3>Calculus</h3>
+              <p>
+                Differentiation and integration to model change and area.
+                Includes chain rule, product rule, and applications.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Pure</span>
+                <span class="tag">A-Level</span>
+              </div>
+            </article>
+
+            <article class="subtopic-card">
+              <h3>Vectors</h3>
+              <p>
+                Magnitude + direction. Lines, intersections, and 3D geometry.
+                Useful in mechanics and coordinate geometry problems.
+              </p>
+              <div class="tag-row">
+                <span class="tag">3D</span>
+                <span class="tag">Geometry</span>
+              </div>
+            </article>
+
+            <article class="subtopic-card">
+              <h3>Statistics</h3>
+              <p>
+                Data, probability distributions, and hypothesis testing.
+                Includes normal approximation and interpreting results.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Stats</span>
+                <span class="tag">Hypothesis</span>
+              </div>
+            </article>
+
+            <article class="subtopic-card">
+              <h3>Mechanics</h3>
+              <p>
+                Modelling motion with forces. Newton’s laws, moments, friction,
+                and connected particles style questions.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Forces</span>
+                <span class="tag">Motion</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- ===== PHYSICS SUBTOPICS ===== -->
+        <section class="subtopic-group" data-topic-group="physics" hidden>
+          <div class="grid">
+            <article class="subtopic-card">
+              <h3>Electricity</h3>
+              <p>
+                Current, voltage, resistance, and circuits.
+                Includes power, internal resistance, and practical setups.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Circuits</span>
+                <span class="tag">Power</span>
+              </div>
+            </article>
+
+            <article class="subtopic-card">
+              <h3>Waves</h3>
+              <p>
+                Reflection, refraction, interference, and superposition.
+                Links to sound, light, and exam-style calculations.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Light</span>
+                <span class="tag">Interference</span>
+              </div>
+            </article>
+
+            <article class="subtopic-card">
+              <h3>Mechanics</h3>
+              <p>
+                Energy, momentum, and forces in motion.
+                Includes collisions, projectiles, and modelling assumptions.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Energy</span>
+                <span class="tag">Momentum</span>
+              </div>
+            </article>
+
+            <article class="subtopic-card">
+              <h3>Fields</h3>
+              <p>
+                Gravitational, electric, and magnetic fields.
+                Field lines, forces at a distance, and potential/energy ideas.
+              </p>
+              <div class="tag-row">
+                <span class="tag">EM</span>
+                <span class="tag">Gravity</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- ===== CS SUBTOPICS ===== -->
+        <section class="subtopic-group" data-topic-group="cs" hidden>
+          <div class="grid">
+            <article class="subtopic-card">
+              <h3>Programming</h3>
+              <p>
+                Clean code with variables, loops, functions, and data structures.
+                Includes debugging and basic software design.
+              </p>
+              <div class="tag-row">
+                <span class="tag">C#</span>
+                <span class="tag">Python</span>
+              </div>
+            </article>
+
+            <article class="subtopic-card">
+              <h3>Algorithms</h3>
+              <p>
+                Searching and sorting, Big-O intuition, recursion, and problem solving.
+                Includes trace tables and exam-style questions.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Big-O</span>
+                <span class="tag">Tracing</span>
+              </div>
+            </article>
+
+            <article class="subtopic-card">
+              <h3>Data & Databases</h3>
+              <p>
+                Data representation, SQL basics, and storing information reliably.
+                Includes data types, files, and relational structure.
+              </p>
+              <div class="tag-row">
+                <span class="tag">SQL</span>
+                <span class="tag">Data</span>
+              </div>
+            </article>
+
+            <article class="subtopic-card">
+              <h3>Computer Systems</h3>
+              <p>
+                CPU, memory, fetch-execute cycle, and how programs run.
+                Includes networks, security basics, and architecture.
+              </p>
+              <div class="tag-row">
+                <span class="tag">CPU</span>
+                <span class="tag">Networks</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
       </div>
 
-      <p class="hint" id="subtopicHint">
-        Choose a subtopic to see its description.
-      </p>
-
-      <!-- ===== MATHS SUBTOPICS (text lives in HTML) ===== -->
-      <section class="subtopic-group" data-topic-group="maths" hidden>
-        <div class="grid">
-          <article class="subtopic-card">
-            <h3>Calculus</h3>
-            <p>
-              Differentiation and integration used to model change and area.
-              Includes chain rule, product rule, and applications.
-            </p>
-          </article>
-
-          <article class="subtopic-card">
-            <h3>Vectors</h3>
-            <p>
-              Magnitude + direction. Lines, intersections, and 3D geometry.
-              Useful in mechanics and coordinate geometry problems.
-            </p>
-          </article>
-
-          <article class="subtopic-card">
-            <h3>Statistics</h3>
-            <p>
-              Data, probability distributions, and hypothesis testing.
-              Includes normal approximation and interpreting results.
-            </p>
-          </article>
-
-          <article class="subtopic-card">
-            <h3>Mechanics</h3>
-            <p>
-              Modelling motion with forces. Newton’s laws, moments, friction,
-              and connected particles style questions.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <!-- ===== PHYSICS SUBTOPICS ===== -->
-      <section class="subtopic-group" data-topic-group="physics" hidden>
-        <div class="grid">
-          <article class="subtopic-card">
-            <h3>Electricity</h3>
-            <p>
-              Current, voltage, resistance, and circuits.
-              Includes power, internal resistance, and practical setups.
-            </p>
-          </article>
-
-          <article class="subtopic-card">
-            <h3>Waves</h3>
-            <p>
-              Reflection, refraction, interference, and superposition.
-              Links to sound, light, and exam-style wave calculations.
-            </p>
-          </article>
-
-          <article class="subtopic-card">
-            <h3>Mechanics</h3>
-            <p>
-              Energy, momentum, and forces in motion.
-              Includes collisions, projectiles, and modelling assumptions.
-            </p>
-          </article>
-
-          <article class="subtopic-card">
-            <h3>Fields</h3>
-            <p>
-              Gravitational, electric, and magnetic fields.
-              Forces at a distance, field lines, and energy concepts.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <!-- ===== COMPUTER SCIENCE SUBTOPICS ===== -->
-      <section class="subtopic-group" data-topic-group="cs" hidden>
-        <div class="grid">
-          <article class="subtopic-card">
-            <h3>Programming</h3>
-            <p>
-              Writing clean code with variables, loops, functions, and data structures.
-              Includes debugging and basic software design.
-            </p>
-          </article>
-
-          <article class="subtopic-card">
-            <h3>Algorithms</h3>
-            <p>
-              Searching and sorting, Big-O thinking, recursion, and problem solving.
-              Includes trace tables and exam-style algorithm questions.
-            </p>
-          </article>
-
-          <article class="subtopic-card">
-            <h3>Data & Databases</h3>
-            <p>
-              Data representation, SQL basics, and storing information reliably.
-              Includes data types, files, and simple relational ideas.
-            </p>
-          </article>
-
-          <article class="subtopic-card">
-            <h3>Computer Systems</h3>
-            <p>
-              CPU, memory, fetch-execute cycle, and how programs run.
-              Includes networks, security basics, and architecture ideas.
-            </p>
-          </article>
-        </div>
-      </section>
-
+      <footer class="screen-footer">
+        <p class="tiny">Tip: On GitHub Pages, refresh might cache — hard refresh if needed.</p>
+      </footer>
     </section>
+
   </main>
-
-  <footer class="site-footer">
-    <p>Built with HTML + CSS + JS (content in HTML, behaviour in JS).</p>
-  </footer>
 
   <script src="script.js"></script>
 </body>
