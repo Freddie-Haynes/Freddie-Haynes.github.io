@@ -4,34 +4,166 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Freddie's Learning Hub</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
   <header class="site-header">
     <h1>Freddie's Learning Hub</h1>
-    <p id="subtitle">Choose a subject</p>
+    <p class="subtitle">Pick a topic, then choose a subtopic.</p>
   </header>
 
   <main class="container">
-    <!-- Breadcrumb / controls -->
-    <div class="controls">
-      <button id="backBtn" class="btn" hidden>← Back</button>
-      <button id="homeBtn" class="btn" hidden>Home</button>
-    </div>
 
-    <!-- Grid of boxes (subjects OR topics) -->
-    <section class="grid" id="grid" aria-label="Clickable boxes"></section>
+    <!-- ===== MAIN TOPIC PAGE ===== -->
+    <section id="topicPage" class="page page-active" aria-label="Topic chooser">
+      <h2 class="page-title">Topics</h2>
 
-    <!-- Optional info panel -->
-    <section class="panel" id="panel" hidden>
-      <h2 id="panelTitle"></h2>
-      <p id="panelText"></p>
+      <div class="topic-column">
+        <button class="topic-card" type="button" data-topic="maths">
+          <h3>Maths</h3>
+          <p>Pure, Stats, Mechanics, and problem-solving.</p>
+        </button>
+
+        <button class="topic-card" type="button" data-topic="physics">
+          <h3>Physics</h3>
+          <p>Forces, fields, energy, and real-world applications.</p>
+        </button>
+
+        <button class="topic-card" type="button" data-topic="cs">
+          <h3>Computer Science</h3>
+          <p>Programming, algorithms, systems, and NEA projects.</p>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===== SUBTOPIC CHOOSER PAGE ===== -->
+    <section id="subtopicPage" class="page" aria-label="Subtopic chooser">
+      <div class="subtopic-header">
+        <button id="backBtn" class="back-btn" type="button">← Back to Topics</button>
+        <h2 class="page-title" id="subtopicTitle">Subtopics</h2>
+      </div>
+
+      <p class="hint" id="subtopicHint">
+        Choose a subtopic to see its description.
+      </p>
+
+      <!-- ===== MATHS SUBTOPICS (text lives in HTML) ===== -->
+      <section class="subtopic-group" data-topic-group="maths" hidden>
+        <div class="grid">
+          <article class="subtopic-card">
+            <h3>Calculus</h3>
+            <p>
+              Differentiation and integration used to model change and area.
+              Includes chain rule, product rule, and applications.
+            </p>
+          </article>
+
+          <article class="subtopic-card">
+            <h3>Vectors</h3>
+            <p>
+              Magnitude + direction. Lines, intersections, and 3D geometry.
+              Useful in mechanics and coordinate geometry problems.
+            </p>
+          </article>
+
+          <article class="subtopic-card">
+            <h3>Statistics</h3>
+            <p>
+              Data, probability distributions, and hypothesis testing.
+              Includes normal approximation and interpreting results.
+            </p>
+          </article>
+
+          <article class="subtopic-card">
+            <h3>Mechanics</h3>
+            <p>
+              Modelling motion with forces. Newton’s laws, moments, friction,
+              and connected particles style questions.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== PHYSICS SUBTOPICS ===== -->
+      <section class="subtopic-group" data-topic-group="physics" hidden>
+        <div class="grid">
+          <article class="subtopic-card">
+            <h3>Electricity</h3>
+            <p>
+              Current, voltage, resistance, and circuits.
+              Includes power, internal resistance, and practical setups.
+            </p>
+          </article>
+
+          <article class="subtopic-card">
+            <h3>Waves</h3>
+            <p>
+              Reflection, refraction, interference, and superposition.
+              Links to sound, light, and exam-style wave calculations.
+            </p>
+          </article>
+
+          <article class="subtopic-card">
+            <h3>Mechanics</h3>
+            <p>
+              Energy, momentum, and forces in motion.
+              Includes collisions, projectiles, and modelling assumptions.
+            </p>
+          </article>
+
+          <article class="subtopic-card">
+            <h3>Fields</h3>
+            <p>
+              Gravitational, electric, and magnetic fields.
+              Forces at a distance, field lines, and energy concepts.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== COMPUTER SCIENCE SUBTOPICS ===== -->
+      <section class="subtopic-group" data-topic-group="cs" hidden>
+        <div class="grid">
+          <article class="subtopic-card">
+            <h3>Programming</h3>
+            <p>
+              Writing clean code with variables, loops, functions, and data structures.
+              Includes debugging and basic software design.
+            </p>
+          </article>
+
+          <article class="subtopic-card">
+            <h3>Algorithms</h3>
+            <p>
+              Searching and sorting, Big-O thinking, recursion, and problem solving.
+              Includes trace tables and exam-style algorithm questions.
+            </p>
+          </article>
+
+          <article class="subtopic-card">
+            <h3>Data & Databases</h3>
+            <p>
+              Data representation, SQL basics, and storing information reliably.
+              Includes data types, files, and simple relational ideas.
+            </p>
+          </article>
+
+          <article class="subtopic-card">
+            <h3>Computer Systems</h3>
+            <p>
+              CPU, memory, fetch-execute cycle, and how programs run.
+              Includes networks, security basics, and architecture ideas.
+            </p>
+          </article>
+        </div>
+      </section>
+
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>Made with GitHub Pages</p>
+    <p>Built with HTML + CSS + JS (content in HTML, behaviour in JS).</p>
   </footer>
 
   <script src="script.js"></script>
