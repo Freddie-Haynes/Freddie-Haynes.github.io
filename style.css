@@ -1,3 +1,5 @@
+/* style.css */
+
 /* ===== Reset ===== */
 * { box-sizing: border-box; }
 html, body { height: 100%; }
@@ -233,12 +235,19 @@ body {
   backdrop-filter: blur(12px);
   box-shadow: 0 16px 36px rgba(0,0,0,0.20);
   transition: transform 140ms ease, background 140ms ease, box-shadow 140ms ease;
+  cursor: pointer; /* NEW */
 }
 
 .subtopic-card:hover {
   transform: translateY(-2px);
   background: rgba(255,255,255,0.10);
   box-shadow: 0 22px 44px rgba(0,0,0,0.26);
+}
+
+/* Keyboard focus */
+.subtopic-card:focus {
+  outline: 2px solid rgba(255,255,255,0.35);
+  outline-offset: 3px;
 }
 
 .subtopic-card h3 {
@@ -267,6 +276,38 @@ body {
   padding: 8px 6px 0;
   color: rgba(255,255,255,0.55);
   text-align: center;
+}
+
+/* ===== Detail page (NEW) ===== */
+.detail-card {
+  margin-top: 14px;
+  border-radius: 22px;
+  padding: 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.20);
+}
+
+.detail-img {
+  width: 100%;
+  border-radius: 18px;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.detail-content {
+  color: rgba(255,255,255,0.78);
+  line-height: 1.6;
+}
+
+.detail-content h3 {
+  color: rgba(255,255,255,0.92);
+  margin: 14px 0 8px;
+}
+
+.detail-content ul {
+  margin: 8px 0 0 18px;
 }
 
 /* Responsive */
