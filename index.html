@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +83,9 @@
         <!-- ===== MATHS SUBTOPICS ===== -->
         <section class="subtopic-group" data-topic-group="maths" hidden>
           <div class="grid">
-            <article class="subtopic-card">
+            <article class="subtopic-card"
+                     role="button" tabindex="0"
+                     data-subtopic="maths-calculus" data-title="Calculus">
               <h3>Calculus</h3>
               <p>
                 Differentiation and integration to model change and area.
@@ -94,7 +97,9 @@
               </div>
             </article>
 
-            <article class="subtopic-card">
+            <article class="subtopic-card"
+                     role="button" tabindex="0"
+                     data-subtopic="maths-vectors" data-title="Vectors">
               <h3>Vectors</h3>
               <p>
                 Magnitude + direction. Lines, intersections, and 3D geometry.
@@ -106,7 +111,9 @@
               </div>
             </article>
 
-            <article class="subtopic-card">
+            <article class="subtopic-card"
+                     role="button" tabindex="0"
+                     data-subtopic="maths-statistics" data-title="Statistics">
               <h3>Statistics</h3>
               <p>
                 Data, probability distributions, and hypothesis testing.
@@ -118,7 +125,9 @@
               </div>
             </article>
 
-            <article class="subtopic-card">
+            <article class="subtopic-card"
+                     role="button" tabindex="0"
+                     data-subtopic="maths-mechanics" data-title="Mechanics">
               <h3>Mechanics</h3>
               <p>
                 Modelling motion with forces. Newton’s laws, moments, friction,
@@ -135,7 +144,9 @@
         <!-- ===== PHYSICS SUBTOPICS ===== -->
         <section class="subtopic-group" data-topic-group="physics" hidden>
           <div class="grid">
-            <article class="subtopic-card">
+            <article class="subtopic-card"
+                     role="button" tabindex="0"
+                     data-subtopic="physics-electricity" data-title="Electricity">
               <h3>Electricity</h3>
               <p>
                 Current, voltage, resistance, and circuits.
@@ -147,7 +158,9 @@
               </div>
             </article>
 
-            <article class="subtopic-card">
+            <article class="subtopic-card"
+                     role="button" tabindex="0"
+                     data-subtopic="physics-waves" data-title="Waves">
               <h3>Waves</h3>
               <p>
                 Reflection, refraction, interference, and superposition.
@@ -159,7 +172,9 @@
               </div>
             </article>
 
-            <article class="subtopic-card">
+            <article class="subtopic-card"
+                     role="button" tabindex="0"
+                     data-subtopic="physics-mechanics" data-title="Mechanics">
               <h3>Mechanics</h3>
               <p>
                 Energy, momentum, and forces in motion.
@@ -171,7 +186,9 @@
               </div>
             </article>
 
-            <article class="subtopic-card">
+            <article class="subtopic-card"
+                     role="button" tabindex="0"
+                     data-subtopic="physics-fields" data-title="Fields">
               <h3>Fields</h3>
               <p>
                 Gravitational, electric, and magnetic fields.
@@ -188,7 +205,9 @@
         <!-- ===== CS SUBTOPICS ===== -->
         <section class="subtopic-group" data-topic-group="cs" hidden>
           <div class="grid">
-            <article class="subtopic-card">
+            <article class="subtopic-card"
+                     role="button" tabindex="0"
+                     data-subtopic="cs-programming" data-title="Programming">
               <h3>Programming</h3>
               <p>
                 Clean code with variables, loops, functions, and data structures.
@@ -200,7 +219,9 @@
               </div>
             </article>
 
-            <article class="subtopic-card">
+            <article class="subtopic-card"
+                     role="button" tabindex="0"
+                     data-subtopic="cs-algorithms" data-title="Algorithms">
               <h3>Algorithms</h3>
               <p>
                 Searching and sorting, Big-O intuition, recursion, and problem solving.
@@ -212,7 +233,9 @@
               </div>
             </article>
 
-            <article class="subtopic-card">
+            <article class="subtopic-card"
+                     role="button" tabindex="0"
+                     data-subtopic="cs-data" data-title="Data & Databases">
               <h3>Data & Databases</h3>
               <p>
                 Data representation, SQL basics, and storing information reliably.
@@ -224,7 +247,9 @@
               </div>
             </article>
 
-            <article class="subtopic-card">
+            <article class="subtopic-card"
+                     role="button" tabindex="0"
+                     data-subtopic="cs-systems" data-title="Computer Systems">
               <h3>Computer Systems</h3>
               <p>
                 CPU, memory, fetch-execute cycle, and how programs run.
@@ -242,6 +267,32 @@
 
       <footer class="screen-footer">
         <p class="tiny">Tip: On GitHub Pages, refresh might cache — hard refresh if needed.</p>
+      </footer>
+    </section>
+
+    <!-- ===== DETAIL SCREEN (NEW) ===== -->
+    <section id="detailPage" class="screen" aria-label="Subtopic detail">
+      <header class="screen-header">
+        <div class="topbar">
+          <button id="detailHomeBtn" class="btn btn-primary" type="button">Home</button>
+          <button id="detailBackBtn" class="btn btn-ghost" type="button">Back</button>
+
+          <div class="topbar-title">
+            <h2 id="detailTitle">Title</h2>
+            <p id="detailSubtitle">Subtitle</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="screen-body">
+        <div class="detail-card">
+          <img id="detailImg" class="detail-img" alt="" hidden />
+          <div id="detailContent" class="detail-content"></div>
+        </div>
+      </div>
+
+      <footer class="screen-footer">
+        <p class="tiny">Put images in an <strong>/images</strong> folder and reference them in script.js.</p>
       </footer>
     </section>
 
