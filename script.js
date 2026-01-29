@@ -14,8 +14,6 @@ function setActiveScreen(screenToShow) {
   topicPage.classList.remove("screen-active");
   subtopicPage.classList.remove("screen-active");
   screenToShow.classList.add("screen-active");
-
-  // Optional: jump to top on screen change
   window.scrollTo({ top: 0, behavior: "instant" });
 }
 
@@ -38,12 +36,11 @@ function showSubtopics(topicKey) {
 
   const name = niceTopicName(topicKey);
   subtopicTitle.textContent = `${name} — Subtopics`;
-  subtopicHint.textContent = `Pick a subtopic below to start revising ${name}.`;
+  subtopicHint.textContent = `Pick a subtopic below to open full notes for ${name}.`;
 
   setActiveScreen(subtopicPage);
 }
 
-// Topic click
 topicButtons.forEach(btn => {
   btn.addEventListener("click", () => {
     const topicKey = btn.getAttribute("data-topic");
@@ -51,6 +48,5 @@ topicButtons.forEach(btn => {
   });
 });
 
-// Back + Home
 backBtn.addEventListener("click", () => setActiveScreen(topicPage));
 homeBtn.addEventListener("click", () => setActiveScreen(topicPage));
